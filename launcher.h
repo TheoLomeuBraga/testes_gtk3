@@ -2,6 +2,7 @@ using namespace std;
 #include <gtk/gtk.h>
 #include <iostream>
 #include "component.h"
+#include "config.h"
 
 class launcher : public component{
 public:
@@ -35,9 +36,9 @@ public:
 
         //set image
         GdkPixbuf *pb = gdk_pixbuf_new_from_file(this->icon,NULL);
-        gdk_pixbuf_scale_simple(pb,16,16,GDK_INTERP_BILINEAR);
-        image = (GtkImage*)gtk_image_new_from_pixbuf(pb);
-        gtk_image_set_from_pixbuf(GTK_IMAGE(image), pb);
+        GdkPixbuf *pxbscaled = gdk_pixbuf_scale_simple(pb,icon_res,icon_res,GDK_INTERP_BILINEAR);
+        image = (GtkImage*)gtk_image_new_from_pixbuf(pxbscaled);
+        gtk_image_set_from_pixbuf(GTK_IMAGE(image), pxbscaled);
         gtk_button_set_image (GTK_BUTTON(button),(GtkWidget *)image); 
  
         //image = (GtkImage *)gtk_image_new_from_file(this->icon); 

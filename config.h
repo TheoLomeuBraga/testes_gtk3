@@ -1,0 +1,1 @@
+int icon_res = 32;
