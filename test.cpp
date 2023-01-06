@@ -1,13 +1,15 @@
 #include <gtk/gtk.h>
 
-static void
-activate (GtkApplication* app,gpointer user_data)
+#include "launcher.h"
+
+static void activate (GtkApplication* app,gpointer user_data)
 {
   GtkWidget *window;
     
   window = gtk_application_window_new (app);
   gtk_window_set_title (GTK_WINDOW (window), "hello world");
   gtk_window_set_default_size (GTK_WINDOW (window), 200, 200);
+  launcher("","aaaaa","echo hello world").render(window);
   gtk_widget_show_all (window);
 }
 

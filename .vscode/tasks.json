@@ -5,8 +5,8 @@
             "label": "C/C++: g++ build active file",
             "command": "/usr/bin/g++",
             "args": [
+                "-std=c++2a",
                 "`pkg-config --cflags gtk+-3.0`",
-                "-std=c++22",
                 "-fdiagnostics-color=always",
                 "-g",
                 "${file}",
