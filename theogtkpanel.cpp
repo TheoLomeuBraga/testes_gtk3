@@ -2,12 +2,11 @@ using namespace std;
 #include <gtk/gtk.h>
 
 #include "launcher.h"
-
 #include "vector"
+#include <memory>
 
-vector<component> components = {
-    launcher("","firefox","firefox &"),
-    launcher("","thunar","thunar &"),
+vector<shared_ptr<component>> components = {
+      make_shared<launcher>(launcher("","firefox","firefox &")),
     };
 
 static void activate (GtkApplication* app,gpointer user_data)
@@ -23,10 +22,11 @@ static void activate (GtkApplication* app,gpointer user_data)
     gtk_window_set_keep_above(GTK_WINDOW(window),true);
     gtk_window_set_default_size (GTK_WINDOW (window), 100, 300);
 
-    launcher("","firefox","firefox &").render(window);
+    //create grid
+    grid = gtk_grid_new();
 
     for(int i = 0; i < components.size();i++){
-      components[i].render(window);
+      components[i]->render(window);
     }
     gtk_widget_show_all(window);
 }
