@@ -1,14 +1,15 @@
 using namespace std;
 #include <gtk/gtk.h>
 #include <iostream>
+#include "component.h"
 
-
-class launcher{
+class launcher : public component{
 public:
-    gchar* icon,*name,*command;
+    char* icon,*name,*command;
+    GtkWidget *button,*button_box;
     launcher(){}
 
-    launcher(gchar* icon,gchar* name,gchar* command){
+    launcher(char* icon,char* name,char* command){
         this->icon = icon;
         this->name = name;
         this->command = command;
@@ -17,12 +18,12 @@ public:
     
     static void run_command (GtkWidget *widget,gpointer data)
     {
-        system((gchar*)data);
+        system((char*)data);
     }
     void render(GtkWidget *window){
 
 
-        GtkWidget *button,*button_box;
+        
 
         button_box = gtk_button_box_new (GTK_ORIENTATION_HORIZONTAL);
         gtk_container_add (GTK_CONTAINER (window), button_box);

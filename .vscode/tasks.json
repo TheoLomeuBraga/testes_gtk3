@@ -6,6 +6,7 @@
             "command": "/usr/bin/g++",
             "args": [
                 "-std=c++17",
+                "-I./include",
                 "`pkg-config --cflags gtk+-3.0`",
                 "-fdiagnostics-color=always",
                 "-g",
