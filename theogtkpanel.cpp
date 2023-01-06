@@ -7,7 +7,7 @@ using namespace std;
 
 vector<shared_ptr<component>> components = {
   make_shared<launcher>(launcher("/home/theo/testes_gtk3/built/icons/browser.png","firefox","firefox &")),
-  make_shared<launcher>(launcher("","thunar","thunar &")),
+  make_shared<launcher>(launcher("thunar","thunar","thunar &")),
   //make_shared<launcher>(launcher("","firefox","firefox &")),
 };
 

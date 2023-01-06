@@ -33,8 +33,15 @@ public:
         button = gtk_button_new_with_label("");
         g_signal_connect (button, "clicked", G_CALLBACK (launcher::run_command), (gpointer)this->command);
 
-        image = (GtkImage *)gtk_image_new_from_file(this->icon); 
+        //set image
+        GdkPixbuf *pb = gdk_pixbuf_new_from_file(this->icon,NULL);
+        gdk_pixbuf_scale_simple(pb,16,16,GDK_INTERP_BILINEAR);
+        image = (GtkImage*)gtk_image_new_from_pixbuf(pb);
+        gtk_image_set_from_pixbuf(GTK_IMAGE(image), pb);
         gtk_button_set_image (GTK_BUTTON(button),(GtkWidget *)image); 
+ 
+        //image = (GtkImage *)gtk_image_new_from_file(this->icon); 
+        //gtk_button_set_image (GTK_BUTTON(button),(GtkWidget *)image); 
         
         gtk_box_pack_start(GTK_BOX(container), button, TRUE, TRUE, 0);
         gtk_widget_set_tooltip_text(button, this->name);
