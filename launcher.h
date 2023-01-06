@@ -25,11 +25,20 @@ public:
 
         
 
-        button_box = gtk_button_box_new (GTK_ORIENTATION_HORIZONTAL);
-        gtk_container_add (GTK_CONTAINER (grid), button_box);
+        
 
+        
+        
+        
+
+        button_box = gtk_button_box_new (GTK_ORIENTATION_HORIZONTAL);
         button = gtk_button_new_with_label(this->name);
         g_signal_connect (button, "clicked", G_CALLBACK (launcher::run_command), (gpointer)this->command);
         gtk_container_add (GTK_CONTAINER (button_box), button);
+        next_avaliable_slot_in_grid++;
+
+        gtk_container_add (GTK_CONTAINER (grid), button_box);
+        gtk_grid_attach(GTK_GRID (grid), button, 0, 0, 1, 1);
+        next_avaliable_slot_in_grid++;
     }
 };

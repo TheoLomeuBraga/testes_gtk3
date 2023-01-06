@@ -1,6 +1,6 @@
 #include <gtk/gtk.h>
 
-int avaliable_space_in_grid = 0;
+int next_avaliable_slot_in_grid = 0;
 GtkWidget *grid = NULL;
 
 class component{
