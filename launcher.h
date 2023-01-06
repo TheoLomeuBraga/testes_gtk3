@@ -1,24 +1,23 @@
 using namespace std;
 #include <gtk/gtk.h>
 #include <iostream>
-#include <string>
+
 
 class launcher{
 public:
-    string icon,name,command;
+    gchar* icon,*name,*command;
     launcher(){}
 
-    launcher(string icon,string name,string command){
+    launcher(gchar* icon,gchar* name,gchar* command){
         this->icon = icon;
         this->name = name;
         this->command = command;
     }
 
     
-    static void run (GtkWidget *widget,gpointer data)
+    static void run_command (GtkWidget *widget,gpointer data)
     {
-        launcher* This = ((launcher*)data);
-        system((This->command + " &").c_str());
+        system((gchar*)data);
     }
     void render(GtkWidget *window){
 
@@ -28,9 +27,9 @@ public:
         button_box = gtk_button_box_new (GTK_ORIENTATION_HORIZONTAL);
         gtk_container_add (GTK_CONTAINER (window), button_box);
 
-        button = gtk_button_new_with_label("Hello World");
-        g_signal_connect (button, "clicked", G_CALLBACK (this->run), NULL);
-        g_signal_connect_swapped (button, "clicked", G_CALLBACK (gtk_widget_destroy), window);
+        button = gtk_button_new_with_label(this->name);
+        g_signal_connect (button, "clicked", G_CALLBACK (launcher::run_command), (gpointer)this->command);
+        //g_signal_connect_swapped (button, "clicked", G_CALLBACK (gtk_widget_destroy), window);
         gtk_container_add (GTK_CONTAINER (button_box), button);
     }
 };
