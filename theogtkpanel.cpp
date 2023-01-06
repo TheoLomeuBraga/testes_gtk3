@@ -24,9 +24,11 @@ static void activate (GtkApplication* app,gpointer user_data)
 
     //create grid
     grid = gtk_grid_new();
+    
+    gtk_container_add (GTK_CONTAINER(window), grid);
 
     for(int i = 0; i < components.size();i++){
-      components[i]->render(window);
+      components[i]->render(grid);
     }
     gtk_widget_show_all(window);
 }
