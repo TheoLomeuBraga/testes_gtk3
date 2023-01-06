@@ -7,6 +7,8 @@ using namespace std;
 
 vector<shared_ptr<component>> components = {
       make_shared<launcher>(launcher("","firefox","firefox &")),
+      make_shared<launcher>(launcher("","firefox","firefox &")),
+      make_shared<launcher>(launcher("","firefox","firefox &")),
     };
 
 static void activate (GtkApplication* app,gpointer user_data)

@@ -38,7 +38,7 @@ public:
         next_avaliable_slot_in_grid++;
 
         gtk_container_add (GTK_CONTAINER (grid), button_box);
-        gtk_grid_attach(GTK_GRID (grid), button, 0, 0, 1, 1);
+        gtk_grid_attach(GTK_GRID (grid), button, 1, 2, 1, 1);
         next_avaliable_slot_in_grid++;
     }
 };
