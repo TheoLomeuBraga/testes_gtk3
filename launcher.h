@@ -20,17 +20,16 @@ public:
     {
         system((char*)data);
     }
-    void render(GtkWidget *window){
+    void render(GtkWidget *grid){
 
 
         
 
         button_box = gtk_button_box_new (GTK_ORIENTATION_HORIZONTAL);
-        gtk_container_add (GTK_CONTAINER (window), button_box);
+        gtk_container_add (GTK_CONTAINER (grid), button_box);
 
         button = gtk_button_new_with_label(this->name);
         g_signal_connect (button, "clicked", G_CALLBACK (launcher::run_command), (gpointer)this->command);
-        //g_signal_connect_swapped (button, "clicked", G_CALLBACK (gtk_widget_destroy), window);
         gtk_container_add (GTK_CONTAINER (button_box), button);
     }
 };
