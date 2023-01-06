@@ -22,8 +22,7 @@ public:
     }
     void render(GtkWidget *container){
         
-        GtkImage *imagen_pantalla_completa;
-        GtkWidget *pantalla_completa;
+        GtkImage *image;
 
                                                         
         
@@ -34,8 +33,8 @@ public:
         button = gtk_button_new_with_label("");
         g_signal_connect (button, "clicked", G_CALLBACK (launcher::run_command), (gpointer)this->command);
 
-        imagen_pantalla_completa = (GtkImage *)gtk_image_new_from_file(this->icon); 
-        gtk_button_set_image (GTK_BUTTON(button),(GtkWidget *)imagen_pantalla_completa); 
+        image = (GtkImage *)gtk_image_new_from_file(this->icon); 
+        gtk_button_set_image (GTK_BUTTON(button),(GtkWidget *)image); 
         
         gtk_box_pack_start(GTK_BOX(container), button, TRUE, TRUE, 0);
         gtk_widget_set_tooltip_text(button, this->name);
