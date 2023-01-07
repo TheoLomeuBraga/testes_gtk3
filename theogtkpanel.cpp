@@ -10,13 +10,9 @@ using namespace std;
 using json = nlohmann::json;
 
 vector<shared_ptr<component>> components = {
-  make_shared<launcher>(launcher("/home/theo/testes_gtk3/built/icons/browser.png","firefox","firefox &")),
-  make_shared<launcher>(launcher("thunar","thunar","thunar &")),
-  make_shared<launcher>(launcher("thunar","thunar","thunar &")),
-  make_shared<launcher>(launcher("thunar","thunar","thunar &")),
-  make_shared<launcher>(launcher("thunar","thunar","thunar &")),
-  make_shared<launcher>(launcher("thunar","thunar","thunar &")),
-  make_shared<launcher>(launcher("thunar","thunar","thunar &")),
+  make_shared<launcher>(launcher("/usr/lib/firefox/browser/chrome/icons/default/default128.png","firefox","firefox &")),
+  make_shared<launcher>(launcher("pcmanfm","pcmanfm","pcmanfm &")),
+  make_shared<launcher>(launcher("/home/theo/testes_gtk3/built/icons/clock.png","thunar","thunar &")),
 };
 
 
@@ -60,7 +56,7 @@ int main (int argc,char **argv)
   gtk_window_set_skip_taskbar_hint(GTK_WINDOW(window),skip_taskbar_hint);
   gtk_window_set_keep_above(GTK_WINDOW(window),aways_active);
   gtk_window_set_default_size (GTK_WINDOW (window), icon_res, icon_res*components.size());
-  gtk_window_move(GTK_WINDOW (window),0,((res_y/2 - icon_res/2)/1.5) + add_pos_y);
+  gtk_window_move(GTK_WINDOW (window),0,((res_y/2 - icon_res/2)/1.25) + add_pos_y);
   if(centralize){gtk_window_set_position(GTK_WINDOW (window),GTK_WIN_POS_CENTER_ALWAYS);}
 
   GtkWidget *box;
