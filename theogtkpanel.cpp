@@ -4,6 +4,9 @@ using namespace std;
 #include "launcher.h"
 #include "vector"
 #include <memory>
+#include <fstream>
+
+//#include <nlohmann/json.hpp>
 
 vector<shared_ptr<component>> components = {
   make_shared<launcher>(launcher("/home/theo/testes_gtk3/built/icons/browser.png","firefox","firefox &")),
@@ -21,6 +24,20 @@ void load_setings(string path){
   gdk_monitor_get_workarea(gdk_display_get_primary_monitor(gdk_display_get_default()),&workarea);
   res_x = workarea.width;
   res_y = workarea.height;
+
+  //load json
+  //ifstream file(path);
+  //stringstream buffer;
+  //buffer << file.rdbuf();
+  //auto json = nlohmann::json::parse(buffer.str());
+
+
+  //icon_res = json["icon_res"];
+  //add_pos_y = json["add_pos_y"];
+  //aways_active = json["aways_active"];
+  //skip_taskbar_hint = json["skip_taskbar_hint"];
+  //centralize = json["centralize"];
+  //vertical = json["vertical"];
   
 }
 

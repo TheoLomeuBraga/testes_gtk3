@@ -4,13 +4,15 @@ using namespace std;
 #include "component.h"
 #include "config.h"
 
+#define NUM_CHARS 100
+
 class launcher : public component{
 public:
-    char* icon,*name,*command;
+    char *icon,*name,*command;
     GtkWidget *button,*button_box;
     launcher(){}
 
-    launcher(char* icon,char* name,char* command){
+    launcher(char icon[NUM_CHARS],char name[NUM_CHARS],char command[NUM_CHARS]){
         this->icon = icon;
         this->name = name;
         this->command = command;
