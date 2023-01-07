@@ -4,7 +4,7 @@ using namespace std;
 #include "component.h"
 #include "config.h"
 
-#define NUM_CHARS 200
+
 
 class launcher : public component{
 public:
@@ -12,7 +12,7 @@ public:
     GtkWidget *button,*button_box;
     launcher(){}
 
-    launcher(char icon[NUM_CHARS],char name[NUM_CHARS],char command[NUM_CHARS]){
+    launcher(char icon[NUM_CHARS_str],char name[NUM_CHARS_str],char command[NUM_CHARS_str]){
         this->icon = icon;
         this->name = name;
         this->command = command;
@@ -48,10 +48,5 @@ public:
         
         gtk_box_pack_start(GTK_BOX(container), button, TRUE, TRUE, 0);
         gtk_widget_set_tooltip_text(button, this->name);
-
-
-
-
-        next_avaliable_slot_in_grid++;
     }
 };

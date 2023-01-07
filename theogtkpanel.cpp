@@ -2,6 +2,9 @@ using namespace std;
 #include <gtk/gtk.h>
 
 #include "launcher.h"
+#include "watch.h"
+#include "component.h"
+
 #include "vector"
 #include <memory>
 #include <fstream>
@@ -12,7 +15,7 @@ using json = nlohmann::json;
 vector<shared_ptr<component>> components = {
   make_shared<launcher>(launcher("/usr/lib/firefox/browser/chrome/icons/default/default128.png","firefox","firefox &")),
   make_shared<launcher>(launcher("pcmanfm","pcmanfm","pcmanfm &")),
-  make_shared<launcher>(launcher("/home/theo/testes_gtk3/built/icons/clock.png","thunar","thunar &")),
+  make_shared<watch>(watch("/home/theo/testes_gtk3/built/icons/clock.png","")),
 };
 
 

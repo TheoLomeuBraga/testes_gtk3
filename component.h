@@ -1,7 +1,7 @@
-#include <gtk/gtk.h>
+#pragma once
 
-int next_avaliable_slot_in_grid = 0;
-GtkWidget *grid = NULL;
+#include <gtk/gtk.h>
+#define NUM_CHARS_str 200
 
 class component{
     public:
