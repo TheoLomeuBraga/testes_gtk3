@@ -45,12 +45,19 @@ int main (int argc,char **argv)
   gtk_window_move(GTK_WINDOW (window),0,((res_y/2 - icon_res/2)/1.5) + add_pos_y);
   if(centralize){gtk_window_set_position(GTK_WINDOW (window),GTK_WIN_POS_CENTER_ALWAYS);}
 
-  GtkWidget *vbox = gtk_vbox_new(TRUE, 1);
-  gtk_container_add(GTK_CONTAINER(window), vbox);
+  GtkWidget *box;
+  if(vertical){
+    box = gtk_vbox_new(TRUE, 1);
+  }else{
+    box = gtk_hbox_new(TRUE, 1);
+  }
+  gtk_container_add(GTK_CONTAINER(window), box);
+
+  
 
   //render_things
   for(int i = 0; i < components.size();i++){
-      components[i]->render(vbox);
+      components[i]->render(box);
   }
 
 
