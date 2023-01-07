@@ -4,7 +4,7 @@ using namespace std;
 #include "component.h"
 #include "config.h"
 
-#define NUM_CHARS 100
+#define NUM_CHARS 200
 
 class launcher : public component{
 public:

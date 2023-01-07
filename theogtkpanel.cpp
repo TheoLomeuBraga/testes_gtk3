@@ -6,7 +6,8 @@ using namespace std;
 #include <memory>
 #include <fstream>
 
-//#include <nlohmann/json.hpp>
+#include <nlohmann/json.hpp>
+using json = nlohmann::json;
 
 vector<shared_ptr<component>> components = {
   make_shared<launcher>(launcher("/home/theo/testes_gtk3/built/icons/browser.png","firefox","firefox &")),
@@ -26,18 +27,18 @@ void load_setings(string path){
   res_y = workarea.height;
 
   //load json
-  //ifstream file(path);
-  //stringstream buffer;
-  //buffer << file.rdbuf();
-  //auto json = nlohmann::json::parse(buffer.str());
+  ifstream jfile(path);
+  json j = json::parse(jfile);
 
 
-  //icon_res = json["icon_res"];
-  //add_pos_y = json["add_pos_y"];
-  //aways_active = json["aways_active"];
-  //skip_taskbar_hint = json["skip_taskbar_hint"];
-  //centralize = json["centralize"];
-  //vertical = json["vertical"];
+  icon_res = j["icon_res"].get<int>();
+  add_pos_y = j["add_pos_y"].get<int>();
+  aways_active = j["aways_active"].get<int>();
+  skip_taskbar_hint = j["skip_taskbar_hint"].get<int>();
+  centralize = j["centralize"].get<int>();
+  vertical = j["vertical"].get<int>();
+
+  
   
 }
 

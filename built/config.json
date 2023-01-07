@@ -7,7 +7,22 @@
     "vertical": 1,
     "components": [
         {
-            "type": "launcher"
+            "type": "launcher",
+            "icon": "/home/theo/testes_gtk3/built/icons/browser.png",
+            "name": "firefox",
+            "command": "firefox &"
+        },
+        {
+            "type": "launcher",
+            "icon": "",
+            "name": "pcmanfm",
+            "command": "pcmanfm &"
+        },
+        {
+            "type": "launcher",
+            "icon": "",
+            "name": "pcmanfm",
+            "command": "pcmanfm &"
         }
     ]
 }
