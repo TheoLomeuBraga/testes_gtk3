@@ -1,5 +1,6 @@
 using namespace std;
 #include <gtk/gtk.h>
+#include <pthread.h>
 
 #include "launcher.h"
 #include "watch.h"
@@ -44,9 +45,15 @@ void load_setings(string path){
 
 int main (int argc,char **argv)
 {
+  //init gtk
+  //g_thread_init (NULL);
+  gdk_threads_init ();
+  gdk_threads_enter ();
+
   gtk_init(&argc, &argv);
   GtkWidget *window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-  
+
+  //load config
   load_setings("./config.json");
   
   //theme
@@ -81,7 +88,7 @@ int main (int argc,char **argv)
   //display
   gtk_widget_show_all(window);
   gtk_main();
-
+  gdk_threads_leave();
 
   
 }

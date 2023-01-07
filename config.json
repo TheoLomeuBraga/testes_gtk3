@@ -19,9 +19,8 @@
             "command": "pcmanfm &"
         },
         {
-            "type": "launcher",
-            "icon": "",
-            "name": "pcmanfm",
+            "type": "whatch",
+            "icon": "/home/theo/testes_gtk3/built/icons/clock.png",
             "command": "pcmanfm &"
         }
     ]
