@@ -16,10 +16,12 @@ using namespace std;
 using json = nlohmann::json;
 
 vector<shared_ptr<component>> components = {
+  make_shared<launcher>(launcher("/home/theo/testes_gtk3/built/icons/start.png","start","rofi -show drun -show-icons &")),
   make_shared<launcher>(launcher("/home/theo/testes_gtk3/built/icons/browser.png","firefox","firefox &")),
   make_shared<launcher>(launcher("/home/theo/testes_gtk3/built/icons/file.png","pcmanfm","pcmanfm &")),
   make_shared<launcher>(launcher("/home/theo/testes_gtk3/built/icons/cmd.png","GNOME Terminal","gnome-terminal &")),
   make_shared<watch>(watch("/home/theo/testes_gtk3/built/icons/clock.png","")),
+  
 };
 
 
