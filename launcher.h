@@ -32,6 +32,7 @@ public:
 
         GtkSettings *default_settings = gtk_settings_get_default();
         g_object_set(default_settings, "gtk-button-images", TRUE, NULL);
+        
 
         //create button
         button = gtk_button_new_with_label("");
@@ -43,6 +44,11 @@ public:
         image = (GtkImage*)gtk_image_new_from_pixbuf(pxbscaled);
         gtk_image_set_from_pixbuf(GTK_IMAGE(image), pxbscaled);
         gtk_button_set_image (GTK_BUTTON(button),(GtkWidget *)image); 
+
+
+
+
+
  
         //add text
         gtk_widget_set_tooltip_text(button, this->name);
