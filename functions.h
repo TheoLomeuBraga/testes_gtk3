@@ -22,3 +22,14 @@ bool file_exists(string file_path){
 }
 
 string get_home_directory(){return getenv("HOME");}
+
+string get_home_directory_in_path(string path){
+  string ret("");
+  if(path[0] == '~'){
+    path.erase(0, 1);
+    ret = getenv("HOME") + path;
+  }else{
+    ret = path;
+  }
+  return ret;
+}

@@ -44,7 +44,8 @@ void load_setings(string path){
   vertical = j["vertical"].get<int>();
 
   json components = j["components"].get<vector<json>>();
-  cout << components.size() << endl;
+  
+
   
 }
 
@@ -55,24 +56,31 @@ int main (int argc,char **argv)
 {
   //init gtk
   //g_thread_init (NULL);
-  gdk_threads_init ();
-  gdk_threads_enter ();
+  gdk_threads_init();
+  gdk_threads_enter();
 
   gtk_init(&argc, &argv);
   GtkWidget *window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 
   //load config
   args = get_args(argc,argv);
-  if(file_exists("./config.json")){load_setings("./config.json");}
+  if(args.size() == 2 && file_exists(get_home_directory_in_path(args[1]))){
+    load_setings(get_home_directory_in_path(args[1]));
+  }else{
+    if(file_exists("./config.json")){
+      load_setings("./config.json");
+    }
+    else if (file_exists(get_home_directory_in_path("~/.config/theogtkpanel/config.json"))){
+      load_setings(get_home_directory_in_path("~/.config/theogtkpanel/config.json"));
+    }
+  }
+  
+   
+  
+  
 
   
   
-  
-  
-
-  //GtkSettings *default_settings = gtk_settings_get_default();
-  //g_object_set(default_settings, "gtk-button-images", TRUE, NULL);
-    
   
 
   
