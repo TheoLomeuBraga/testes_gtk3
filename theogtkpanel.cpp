@@ -3,7 +3,7 @@ using namespace std;
 #include <pthread.h>
 
 
-
+#include "functions.h"
 #include "launcher.h"
 #include "watch.h"
 #include "component.h"
@@ -48,6 +48,8 @@ void load_setings(string path){
 }
 
 
+
+vector<string> args;
 int main (int argc,char **argv)
 {
   //init gtk
@@ -59,7 +61,13 @@ int main (int argc,char **argv)
   GtkWidget *window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 
   //load config
-  load_setings("./config.json");
+  args = get_args(argc,argv);
+  if(args.size() > 1){
+    load_setings(args[1]);
+  }else{
+    load_setings("./config.json");
+  }
+
   
   
   
