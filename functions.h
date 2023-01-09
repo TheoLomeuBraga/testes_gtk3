@@ -20,3 +20,5 @@ bool file_exists(string file_path){
     file.open(file_path);
     return (bool)file;
 }
+
+string get_home_directory(){return getenv("HOME");}

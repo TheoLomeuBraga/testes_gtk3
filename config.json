@@ -8,20 +8,32 @@
     "components": [
         {
             "type": "launcher",
-            "icon": "/home/theo/testes_gtk3/built/icons/browser.png",
-            "name": "firefox",
-            "command": "firefox &"
+            "icon": "/home/theo/testes_gtk3/built/icons/start.png",
+            "name": "start",
+            "command": "rofi -show drun -show-icons"
         },
         {
             "type": "launcher",
-            "icon": "",
+            "icon": "/home/theo/testes_gtk3/built/icons/browser.png",
+            "name": "firefox",
+            "command": "firefox"
+        },
+        {
+            "type": "launcher",
+            "icon": "/home/theo/testes_gtk3/built/icons/file.png",
             "name": "pcmanfm",
-            "command": "pcmanfm &"
+            "command": "pcmanfm"
+        },
+        {
+            "type": "launcher",
+            "icon": "/home/theo/testes_gtk3/built/icons/cmd.png",
+            "name": "GNOME Terminal",
+            "command": "gnome-terminal"
         },
         {
             "type": "whatch",
             "icon": "/home/theo/testes_gtk3/built/icons/clock.png",
-            "command": "pcmanfm &"
+            "command": "pcmanfm"
         }
     ]
 }
