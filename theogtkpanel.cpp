@@ -126,7 +126,7 @@ int main (int argc,char **argv)
   gtk_window_set_keep_above(GTK_WINDOW(window),aways_active);
   gtk_window_set_default_size (GTK_WINDOW (window), icon_res, icon_res*components.size());
   //keep maximized
-  //g_signal_connect(G_OBJECT(window), "window-state-event", G_CALLBACK(maximize_window), NULL);
+  g_signal_connect(G_OBJECT(window), "window-state-event", G_CALLBACK(maximize_window), NULL);
   
   gtk_window_move(GTK_WINDOW (window),win_pos_x,((res_y/2 - icon_res/2)/1.25) + add_pos_y);
   if(centralize){gtk_window_set_position(GTK_WINDOW (window),GTK_WIN_POS_CENTER_ALWAYS);}
