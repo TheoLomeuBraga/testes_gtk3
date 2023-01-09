@@ -43,7 +43,8 @@ void load_setings(string path){
   centralize = j["centralize"].get<int>();
   vertical = j["vertical"].get<int>();
 
-  json components = j["components"].get<json>();
+  json components = j["components"].get<vector<json>>();
+  cout << components.size() << endl;
   
 }
 
@@ -62,13 +63,7 @@ int main (int argc,char **argv)
 
   //load config
   args = get_args(argc,argv);
-  if(args.size() > 1){
-    load_setings(args[1]);
-  }else{
-    if(file_exists(get_home_directory() + "/.config/theogtkpanel")){load_setings(get_home_directory() + "/.config/theogtkpanel");}
-    else if(file_exists("./config.json")){load_setings("./config.json");}
-    
-  }
+  if(file_exists("./config.json")){load_setings("./config.json");}
 
   
   
