@@ -13,7 +13,11 @@ using namespace std;
 #include <fstream>
 
 #include <nlohmann/json.hpp>
+#include "minimizer.h"
 using json = nlohmann::json;
+
+GtkWidget *window;
+int win_pos_x = 0;
 
 vector<shared_ptr<component>> components = {
   make_shared<launcher>(launcher("/home/theo/testes_gtk3/built/icons/start.png","start","rofi -show drun -show-icons &")),
@@ -34,6 +38,10 @@ void load_setings(string path){
   ifstream jfile(path);
   json j = json::parse(jfile);
 
+  
+  if(!j["position"].get<string>().compare("right")){
+    win_pos_x = res_x - icon_res;
+  }
 
   icon_res = j["icon_res"].get<int>();
   add_pos_y = j["add_pos_y"].get<int>();
@@ -58,6 +66,10 @@ void load_setings(string path){
       string icon = get_home_directory_in_path(comp["icon"].get<string>());
       string command = comp["command"].get<string>();
       components.push_back(make_shared<watch>(watch(icon,command)));
+    }else if (!type.compare("minimizer")){
+      string icon = get_home_directory_in_path(comp["icon"].get<string>());
+      string name = comp["name"].get<string>();
+      components.push_back(make_shared<minimizer>(minimizer(window,icon,name)));
     }
   }
 
@@ -65,6 +77,11 @@ void load_setings(string path){
 }
 
 
+
+//maximize window
+void maximize_window(GtkWidgetClass* widget_class,const char* callback_name,GCallback callback_symbol) {
+    gtk_window_present(GTK_WINDOW(window));
+}
 
 vector<string> args;
 int main (int argc,char **argv)
@@ -75,7 +92,7 @@ int main (int argc,char **argv)
   gdk_threads_enter();
 
   gtk_init(&argc, &argv);
-  GtkWidget *window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+  window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 
   //load config
   args = get_args(argc,argv);
@@ -108,7 +125,10 @@ int main (int argc,char **argv)
   gtk_window_set_skip_taskbar_hint(GTK_WINDOW(window),skip_taskbar_hint);
   gtk_window_set_keep_above(GTK_WINDOW(window),aways_active);
   gtk_window_set_default_size (GTK_WINDOW (window), icon_res, icon_res*components.size());
-  gtk_window_move(GTK_WINDOW (window),0,((res_y/2 - icon_res/2)/1.25) + add_pos_y);
+  //keep maximized
+  //g_signal_connect(G_OBJECT(window), "window-state-event", G_CALLBACK(maximize_window), NULL);
+  
+  gtk_window_move(GTK_WINDOW (window),win_pos_x,((res_y/2 - icon_res/2)/1.25) + add_pos_y);
   if(centralize){gtk_window_set_position(GTK_WINDOW (window),GTK_WIN_POS_CENTER_ALWAYS);}
 
   GtkWidget *box;

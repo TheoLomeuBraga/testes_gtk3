@@ -10,7 +10,7 @@ using namespace std;
 
 #include <iomanip>
 #include <ctime>
-#include "config.h"
+#include "../config.h"
 
 
 string oclock;

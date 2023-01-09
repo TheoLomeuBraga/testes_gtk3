@@ -6,6 +6,7 @@
     "centralize": 0,
     "vertical": 1,
     "seconds_to_update_applets": 4,
+    "position": "left",
     "components": [
         {
             "type": "launcher",
@@ -35,6 +36,11 @@
             "type": "clock",
             "icon": "~/testes_gtk3/built/icons/clock.png",
             "command": "pcmanfm"
+        },
+        {
+            "type": "minimizer",
+            "icon": "~/testes_gtk3/built/icons/workspace.png",
+            "name": "go to workspace"
         }
     ]
 }

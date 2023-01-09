@@ -2,33 +2,27 @@ using namespace std;
 #include <gtk/gtk.h>
 #include <iostream>
 #include "component.h"
-#include "config.h"
+#include "../config.h"
 
-
-
-class launcher : public component{
+class minimizer : public component{
 public:
-    string icon,name,command;
+    GtkWidget *window;
+    string icon,name;
     GtkWidget *button,*button_box;
-    
 
-    //launcher(char icon[NUM_CHARS_STR],char name[NUM_CHARS_STR],char command[NUM_CHARS_STR]){
-    //    this->icon = icon;
-    //    this->name = name;
-    //    this->command = command;
-    //}
-    launcher(string icon,string name,string command){
-        
+    static void minimize(GtkWidget *widget,gpointer data){
+        system("xdotool key super+d");
+        gtk_window_present(GTK_WINDOW(data));
+    }
+
+    minimizer(GtkWidget *window,string icon,string name){
+        this->window = window;
         this->icon = icon;
         this->name = name;
-        this->command = command;
     }
 
     
-    static void run_command (GtkWidget *widget,gpointer data)
-    {
-        system((char*)data);
-    }
+
     void render(GtkWidget *container){
         
         GtkImage *image;
@@ -42,7 +36,7 @@ public:
 
         //create button
         button = gtk_button_new_with_label("");
-        g_signal_connect (button, "clicked", G_CALLBACK (launcher::run_command), (gpointer)(char*)this->command.c_str());
+        g_signal_connect(button, "clicked", G_CALLBACK (minimizer::minimize), (gpointer)window);
 
         //set image
         GdkPixbuf *pb = gdk_pixbuf_new_from_file(this->icon.c_str(),NULL);
