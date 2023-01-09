@@ -21,7 +21,6 @@ vector<shared_ptr<component>> components = {
   make_shared<launcher>(launcher("/home/theo/testes_gtk3/built/icons/file.png","pcmanfm","pcmanfm &")),
   make_shared<launcher>(launcher("/home/theo/testes_gtk3/built/icons/cmd.png","GNOME Terminal","gnome-terminal &")),
   make_shared<watch>(watch("/home/theo/testes_gtk3/built/icons/clock.png","")),
-  
 };
 
 
@@ -42,9 +41,25 @@ void load_setings(string path){
   skip_taskbar_hint = j["skip_taskbar_hint"].get<int>();
   centralize = j["centralize"].get<int>();
   vertical = j["vertical"].get<int>();
+  seconds_to_update_applets = j["seconds_to_update_applets"].get<float>();
 
-  json components = j["components"].get<vector<json>>();
-  
+  components = {};
+  json components_json = j["components"].get<vector<json>>();
+  for(json comp : components_json){
+    string type = comp["type"].get<string>();
+    if(!type.compare("launcher")){
+
+      string icon = get_home_directory_in_path(comp["icon"].get<string>());
+      string name = comp["name"].get<string>();
+      string command = comp["command"].get<string>();
+      components.push_back(make_shared<launcher>(launcher(icon,name,command)));
+
+    }else if (!type.compare("clock")){
+      string icon = get_home_directory_in_path(comp["icon"].get<string>());
+      string command = comp["command"].get<string>();
+      components.push_back(make_shared<watch>(watch(icon,command)));
+    }
+  }
 
   
 }
@@ -66,12 +81,15 @@ int main (int argc,char **argv)
   args = get_args(argc,argv);
   if(args.size() == 2 && file_exists(get_home_directory_in_path(args[1]))){
     load_setings(get_home_directory_in_path(args[1]));
+    print("a");
   }else{
     if(file_exists("./config.json")){
       load_setings("./config.json");
+      print("b");
     }
     else if (file_exists(get_home_directory_in_path("~/.config/theogtkpanel/config.json"))){
       load_setings(get_home_directory_in_path("~/.config/theogtkpanel/config.json"));
+      print("c");
     }
   }
   

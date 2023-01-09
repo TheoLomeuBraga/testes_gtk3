@@ -5,6 +5,7 @@ using namespace std;
 #include <fstream>
 #include <iostream>
 #include <fstream>
+#include "config.h"
 
 vector<string> get_args(int argc,char **argv){
   vector<string> ret;
@@ -32,4 +33,16 @@ string get_home_directory_in_path(string path){
     ret = path;
   }
   return ret;
+}
+
+void print(string s){
+  cout << s << endl;
+}
+
+char* pass_string_to_array(string s){
+  char chars[NUM_CHARS_STR];
+  for(int i = 0;i < min(NUM_CHARS_STR,(int)s.size());i++){
+    chars[i] = s[i];
+  }
+  return chars;
 }
