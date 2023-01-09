@@ -3,6 +3,8 @@ using namespace std;
 #include "vector"
 #include "string"
 #include <fstream>
+#include <iostream>
+#include <fstream>
 
 vector<string> get_args(int argc,char **argv){
   vector<string> ret;
@@ -13,3 +15,8 @@ vector<string> get_args(int argc,char **argv){
   return ret;
 }
 
+bool file_exists(string file_path){
+    ifstream file;
+    file.open(file_path);
+    return (bool)file;
+}
