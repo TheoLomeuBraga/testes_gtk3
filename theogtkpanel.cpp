@@ -6,7 +6,7 @@ using namespace std;
 #include "functions.h"
 #include "launcher.h"
 #include "watch.h"
-#include "component.h"
+#include "button.h"
 
 #include "vector"
 #include <memory>
@@ -70,6 +70,13 @@ void load_setings(string path){
       string icon = get_home_directory_in_path(comp["icon"].get<string>());
       string name = comp["name"].get<string>();
       components.push_back(make_shared<minimizer>(minimizer(window,icon,name)));
+    } else if(!type.compare("button")){
+
+      string icon = get_home_directory_in_path(comp["icon"].get<string>());
+      string name = comp["name"].get<string>();
+      string command = comp["command"].get<string>();
+      components.push_back(make_shared<button>(button(icon,name,command)));
+
     }
   }
 

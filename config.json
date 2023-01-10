@@ -9,38 +9,44 @@
     "position": "left",
     "components": [
         {
-            "type": "launcher",
+            "type": "button",
             "icon": "~/testes_gtk3/built/icons/start.png",
             "name": "start",
             "command": "rofi -show drun -show-icons"
         },
         {
             "type": "launcher",
-            "icon": "~/testes_gtk3/built/icons/browser.png",
+            "icon": "firefox",
             "name": "firefox",
             "command": "firefox"
         },
         {
             "type": "launcher",
-            "icon": "~/testes_gtk3/built/icons/file.png",
-            "name": "pcmanfm",
-            "command": "pcmanfm"
+            "icon": "spacefm",
+            "name": "manage files",
+            "command": "spacefm"
         },
         {
             "type": "launcher",
-            "icon": "~/testes_gtk3/built/icons/cmd.png",
+            "icon": "terminal",
             "name": "GNOME Terminal",
             "command": "gnome-terminal"
-        },
-        {
-            "type": "clock",
-            "icon": "~/testes_gtk3/built/icons/clock.png",
-            "command": "pcmanfm"
         },
         {
             "type": "minimizer",
             "icon": "~/testes_gtk3/built/icons/workspace.png",
             "name": "go to workspace"
+        },
+        {
+            "type": "launcher",
+            "icon": "steam",
+            "name": "steam",
+            "command": "steam"
+        },
+        {
+            "type": "clock",
+            "icon": "clock",
+            "command": "pcmanfm"
         }
     ]
 }
