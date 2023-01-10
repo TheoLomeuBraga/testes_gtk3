@@ -55,26 +55,12 @@ GtkIconTheme* get_icon_theme(){
   if(main_icon_theme.size() == 0){
     ret = gtk_icon_theme_get_default();
   }else{
-    ret = gtk_icon_theme_get_default();
+    ret = gtk_icon_theme_get_for_screen(gdk_screen_get_default());
     
-
-    const char *main_icon_path = main_icon_theme_path.c_str();
-    const char **icon_path = &main_icon_path;
-    print(main_icon_theme_path);
-    printf(icon_path[0]);
-    cout << endl;
     
-    gtk_icon_theme_set_search_path(ret,icon_path,1);
+    gtk_icon_theme_set_custom_theme(ret,main_icon_theme.c_str());
 
-    gchar** paths;
-    gint n_elements;
-    gtk_icon_theme_get_search_path(ret,&paths,&n_elements);
-    print("icons paths");
-    print(n_elements);
-    for(int i = 0;i<n_elements;i++){
-      printf(paths[i]);
-      cout << endl;
-    }
+    
   }
   
   return ret;
