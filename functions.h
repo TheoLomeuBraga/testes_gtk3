@@ -6,6 +6,7 @@ using namespace std;
 #include <iostream>
 #include <fstream>
 #include "config.h"
+#include <gtk/gtk.h>
 
 vector<string> get_args(int argc,char **argv){
   vector<string> ret;
@@ -49,8 +50,16 @@ char* pass_string_to_array(string s){
 
 GtkIconTheme* get_icon_theme(){
   GtkIconTheme* ret;
+  string main_icon_theme_path = string("/usr/share/icons/") + main_icon_theme;
+  print(main_icon_theme);
   if(main_icon_theme.size() == 0){
+    print("AAAAA");
     ret = gtk_icon_theme_get_default();
+  }else{
+    print("BBBBB");
+    ret = gtk_icon_theme_get_default();
+    gtk_icon_theme_set_custom_theme(ret,main_icon_theme.c_str());
   }
+  
   return ret;
 }

@@ -7,7 +7,7 @@
     "vertical": 1,
     "seconds_to_update_applets": 4,
     "position": "left",
-    "main_icon_theme": "",
+    "main_icon_theme": "Papirus",
     "components": [
         {
             "type": "button",
@@ -17,7 +17,7 @@
         },
         {
             "type": "launcher",
-            "icon": "~/testes_gtk3/built/icons/start.png",
+            "icon": "firefox",
             "name": "firefox",
             "command": "firefox"
         },
@@ -34,15 +34,15 @@
             "command": "gnome-terminal"
         },
         {
-            "type": "minimizer",
-            "icon": "~/testes_gtk3/built/icons/workspace.png",
-            "name": "go to workspace"
-        },
-        {
             "type": "launcher",
             "icon": "steam",
             "name": "steam",
             "command": "steam"
+        },
+        {
+            "type": "minimizer",
+            "icon": "~/testes_gtk3/built/icons/workspace.png",
+            "name": "go to workspace"
         },
         {
             "type": "clock",
