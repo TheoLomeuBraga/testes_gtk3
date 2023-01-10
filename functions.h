@@ -36,7 +36,8 @@ string get_home_directory_in_path(string path){
   return ret;
 }
 
-void print(string s){
+template <typename X>
+void print(X s){
   cout << s << endl;
 }
 
@@ -55,15 +56,24 @@ GtkIconTheme* get_icon_theme(){
     ret = gtk_icon_theme_get_default();
   }else{
     ret = gtk_icon_theme_get_default();
-    char *icons_search_paths[] = {(char*)main_icon_theme_path.c_str(),};
-    gtk_icon_theme_set_search_path(ret,(const char**)icons_search_paths,1);
+    
+
+    const char *main_icon_path = main_icon_theme_path.c_str();
+    const char **icon_path = &main_icon_path;
+    print(main_icon_theme_path);
+    printf(icon_path[0]);
+    cout << endl;
+    
+    gtk_icon_theme_set_search_path(ret,icon_path,1);
 
     gchar** paths;
     gint n_elements;
     gtk_icon_theme_get_search_path(ret,&paths,&n_elements);
     print("icons paths");
+    print(n_elements);
     for(int i = 0;i<n_elements;i++){
       printf(paths[i]);
+      cout << endl;
     }
   }
   
