@@ -21,7 +21,7 @@ public:
         
         this->icon = icon;
         this->name = name;
-        this->command = command;
+        this->command = command + " &";
     }
 
     
