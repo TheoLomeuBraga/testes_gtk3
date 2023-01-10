@@ -19,13 +19,7 @@ using json = nlohmann::json;
 GtkWidget *window;
 int win_pos_x = 0;
 
-vector<shared_ptr<component>> components = {
-  make_shared<launcher>(launcher("/home/theo/testes_gtk3/built/icons/start.png","start","rofi -show drun -show-icons &")),
-  make_shared<launcher>(launcher("/home/theo/testes_gtk3/built/icons/browser.png","firefox","firefox &")),
-  make_shared<launcher>(launcher("/home/theo/testes_gtk3/built/icons/file.png","pcmanfm","pcmanfm &")),
-  make_shared<launcher>(launcher("/home/theo/testes_gtk3/built/icons/cmd.png","GNOME Terminal","gnome-terminal &")),
-  make_shared<watch>(watch("/home/theo/testes_gtk3/built/icons/clock.png","")),
-};
+vector<shared_ptr<component>> components = {};
 
 
 void load_setings(string path){
@@ -50,8 +44,7 @@ void load_setings(string path){
   centralize = j["centralize"].get<int>();
   vertical = j["vertical"].get<int>();
   seconds_to_update_applets = j["seconds_to_update_applets"].get<float>();
-
-  components = {};
+  main_icon_theme = j["main_icon_theme"].get<string>(); 
   json components_json = j["components"].get<vector<json>>();
   for(json comp : components_json){
     string type = comp["type"].get<string>();

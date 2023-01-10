@@ -7,6 +7,7 @@
     "vertical": 1,
     "seconds_to_update_applets": 4,
     "position": "left",
+    "main_icon_theme": "",
     "components": [
         {
             "type": "button",
@@ -16,7 +17,7 @@
         },
         {
             "type": "launcher",
-            "icon": "firefox",
+            "icon": "~/testes_gtk3/built/icons/start.png",
             "name": "firefox",
             "command": "firefox"
         },

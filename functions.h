@@ -46,3 +46,11 @@ char* pass_string_to_array(string s){
   }
   return chars;
 }
+
+GtkIconTheme* get_icon_theme(){
+  GtkIconTheme* ret;
+  if(main_icon_theme.size() == 0){
+    ret = gtk_icon_theme_get_default();
+  }
+  return ret;
+}
