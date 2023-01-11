@@ -45,7 +45,6 @@ public:
         g_signal_connect (gtk_button, "clicked", G_CALLBACK (button::run_command), (gpointer)(char*)this->command.c_str());
 
         //set image
-        GtkIconTheme *icon_theme = gtk_icon_theme_get_default ();
         GdkPixbuf *pb = gdk_pixbuf_new_from_file(this->icon.c_str(),NULL);
         GdkPixbuf *pxbscaled = gdk_pixbuf_scale_simple(pb,icon_res,icon_res,GDK_INTERP_BILINEAR);
         image = (GtkImage*)gtk_image_new_from_pixbuf(pxbscaled);

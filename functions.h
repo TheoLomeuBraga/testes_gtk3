@@ -51,16 +51,13 @@ char* pass_string_to_array(string s){
 
 GtkIconTheme* get_icon_theme(){
   GtkIconTheme* ret;
-  string main_icon_theme_path = string("/usr/share/icons/") + main_icon_theme;
-  if(main_icon_theme.size() == 0){
+  if(!main_icon_theme.compare("")){
+    print("using gtk defout");
     ret = gtk_icon_theme_get_default();
   }else{
-    ret = gtk_icon_theme_get_for_screen(gdk_screen_get_default());
-    
-    
+    print("using custom font gtk");
+    ret = gtk_icon_theme_new();
     gtk_icon_theme_set_custom_theme(ret,main_icon_theme.c_str());
-
-    
   }
   
   return ret;
