@@ -48,6 +48,12 @@
             "type": "clock",
             "icon": "com.visualstudio.code",
             "command": ""
+        },
+        {
+            "type": "button",
+            "icon": "~/testes_gtk3/built/icons/close.png",
+            "name": "close",
+            "command": "pkill theogtkpanel"
         }
     ]
 }
