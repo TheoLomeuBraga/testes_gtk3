@@ -48,7 +48,7 @@ public:
         GtkIconTheme *icon_theme = get_icon_theme ();
         //GtkIconTheme *icon_theme;
         
-        GdkPixbuf *pb  = gtk_icon_theme_load_icon (icon_theme,icon.c_str(),48, GTK_ICON_LOOKUP_NO_SVG,  NULL);
+        GdkPixbuf *pb  = gtk_icon_theme_load_icon (icon_theme,icon.c_str(),48, GTK_ICON_LOOKUP_USE_BUILTIN,  NULL);
         GdkPixbuf *pxbscaled = gdk_pixbuf_scale_simple(pb,icon_res,icon_res,GDK_INTERP_BILINEAR);
         image = (GtkImage*)gtk_image_new_from_pixbuf(pxbscaled);
         gtk_image_set_from_pixbuf(GTK_IMAGE(image), pxbscaled);
