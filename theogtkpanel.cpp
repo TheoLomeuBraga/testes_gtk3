@@ -98,15 +98,12 @@ int main (int argc,char **argv)
   args = get_args(argc,argv);
   if(args.size() == 2 && file_exists(get_home_directory_in_path(args[1]))){
     load_setings(get_home_directory_in_path(args[1]));
-    print("a");
   }else{
     if(file_exists("./config.json")){
       load_setings("./config.json");
-      print("b");
     }
     else if (file_exists(get_home_directory_in_path("~/.config/theogtkpanel/config.json"))){
       load_setings(get_home_directory_in_path("~/.config/theogtkpanel/config.json"));
-      print("c");
     }
   }
   
