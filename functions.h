@@ -58,7 +58,7 @@ GtkIconTheme* get_icon_theme(){
     print("using custom font gtk");
     ret = gtk_icon_theme_new();
     gtk_icon_theme_set_custom_theme(ret,main_icon_theme.c_str());
-    print(gtk_icon_theme_has_icon(ret,"steam_icon_519860"));
+    
   }
   
   return ret;
