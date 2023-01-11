@@ -46,8 +46,8 @@
         },
         {
             "type": "clock",
-            "icon": "clock",
-            "command": "pcmanfm"
+            "icon": "",
+            "command": ""
         }
     ]
 }
