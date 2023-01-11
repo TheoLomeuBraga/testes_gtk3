@@ -46,7 +46,7 @@
         },
         {
             "type": "clock",
-            "icon": "~/testes_gtk3/built/icons/clock.png",
+            "icon": "com.visualstudio.code",
             "command": ""
         }
     ]
