@@ -49,6 +49,12 @@ char* pass_string_to_array(string s){
   return chars;
 }
 
+
+
+void force_stop(){
+  system("pkill theogtkpanel");
+}
+
 GtkIconTheme* get_icon_theme(){
   GtkIconTheme* ret;
   if(!main_icon_theme.compare("")){

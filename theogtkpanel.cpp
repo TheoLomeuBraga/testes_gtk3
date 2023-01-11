@@ -45,6 +45,7 @@ void load_setings(string path){
   vertical = j["vertical"].get<int>();
   seconds_to_update_applets = j["seconds_to_update_applets"].get<float>();
   main_icon_theme = j["main_icon_theme"].get<string>(); 
+  icon_theme = get_icon_theme();
   json components_json = j["components"].get<vector<json>>();
   for(json comp : components_json){
     string type = comp["type"].get<string>();
@@ -152,5 +153,5 @@ int main (int argc,char **argv)
   gtk_main();
   gdk_threads_leave();
 
-  
+  return 0;
 }

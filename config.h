@@ -9,5 +9,5 @@ string main_icon_theme;
 
 bool aways_active = false,skip_taskbar_hint = false,centralize = false,vertical = true;
 
-
+GtkIconTheme *icon_theme;
 
